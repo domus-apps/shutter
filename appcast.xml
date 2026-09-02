@@ -5,5 +5,31 @@
   <channel>
     <title>Shutter</title>
     <link>https://github.com/domus-apps/shutter</link>
+    <item>
+      <title>Shutter v1.0.0</title>
+      <link>https://github.com/domus-apps/shutter/releases/tag/v1.0.0</link>
+      <pubDate>Wed, 02 Sep 2026 07:15:04 +0000</pubDate>
+      <description xml:lang="en"><![CDATA[
+<ul>
+<li>Initial release: toggle Light and Dark Mode from anywhere with one global shortcut — ⌃⌥⌘D out of the box, re-recordable in Settings — or a left click on the menu bar icon.</li>
+<li>The switch is instant, animated by the system, and needs no permissions: no Input Monitoring, no Accessibility, nothing to grant.</li>
+<li>The menu bar icon shows where you are (sun for Light, moon for Dark) and follows along even when something else flips the appearance.</li>
+<li>English and Korean, following the macOS language.</li>
+</ul>      ]]></description>
+      <description xml:lang="ko"><![CDATA[
+<ul>
+<li>첫 릴리스: 전역 단축키 하나로 어디서나 라이트/다크 모드를 전환합니다 — 기본값은 ⌃⌥⌘D, 설정에서 원하는 조합으로 바꿀 수 있습니다. 메뉴 막대 아이콘을 클릭해도 전환됩니다.</li>
+<li>전환은 즉각적이고 시스템이 직접 애니메이션합니다. 권한은 아무것도 필요 없습니다 — 입력 모니터링도, 손쉬운 사용도 없습니다.</li>
+<li>메뉴 막대 아이콘이 현재 모드를 보여주고(라이트는 해, 다크는 달), 다른 곳에서 모드를 바꿔도 따라갑니다.</li>
+<li>macOS 언어를 따라 영어와 한국어를 지원합니다.</li>
+</ul>      ]]></description>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://github.com/domus-apps/shutter/releases/download/v1.0.0/Shutter.zip"
+        sparkle:edSignature="hVTvM5DgnE14rekqIyOpCTK5MqSPwEAOjxHA3RMAgp+knGp20bSdgjU5f0DUInqkKRNaYVH0cRg6Q+MzS7KMAg==" length="2912187"
+        type="application/octet-stream"/>
+    </item>
   </channel>
 </rss>
