@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleAlternateNames</key>
+	<array>
+		<string>셔터</string>
+		<string>다크 모드</string>
+		<string>다크모드</string>
+		<string>라이트 모드</string>
+		<string>화면 모드 전환</string>
+		<string>dark mode</string>
+		<string>light mode</string>
+		<string>appearance</string>
+	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>Shutter</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.jhaemin.shutter</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ko</string>
+	</array>
+	<key>CFBundleName</key>
+	<string>Shutter</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>26.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Shutter switches Light and Dark Mode through System Events only when the direct system call is unavailable.</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://raw.githubusercontent.com/domus-apps/shutter/main/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>231/UKP6u5LElqtTkMp2TwNDsr83lQSxVCiJ4UUMR7I=</string>
+</dict>
+</plist>
