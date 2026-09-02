@@ -8,5 +8,5 @@ Keep each bullet on a single line: release notes render line breaks literally (b
 
 - Initial release: toggle Light and Dark Mode from anywhere with one global shortcut — ⌃⌥⌘D out of the box, re-recordable in Settings — or a left click on the menu bar icon.
 - The switch is instant, animated by the system, and needs no permissions: no Input Monitoring, no Accessibility, nothing to grant.
-- The menu bar icon shows where you are (sun for Light, moon for Dark) and follows along even when something else flips the appearance.
+- The menu bar icon shows where you are — the filled shutter leaf marks the current side, day or night — and follows along even when something else flips the appearance.
 - English and Korean, following the macOS language.
