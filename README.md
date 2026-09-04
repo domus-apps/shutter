@@ -29,3 +29,7 @@ asks for no permissions at all.
 ```
 
 Requires macOS 26 or later.
+
+## License
+
+MIT, see [LICENSE](LICENSE). Bundled third-party software and its licenses are listed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
