@@ -69,5 +69,53 @@
         sparkle:edSignature="McxJ5BdcYqocDW0XFi87hYCXPp6xM6WtJ3L7o8j2yrHwVffzW220SVn3xxpr0mtMDqnJlGC9+nhqtY9ZcWKiDA==" length="2912324"
         type="application/octet-stream"/>
     </item>
+    <item>
+      <title>Shutter v1.0.2</title>
+      <link>https://github.com/domus-apps/shutter/releases/tag/v1.0.2</link>
+      <pubDate>Thu, 10 Sep 2026 05:26:07 +0000</pubDate>
+      <description xml:lang="en"><![CDATA[
+<h2>1.0.2</h2>
+<h3>Fixed</h3>
+<ul>
+<li>Closing Settings now returns you to the app you were using, so other apps' shortcuts keep working right away.</li>
+</ul>
+<h2>1.0.1</h2>
+<h3>Fixed</h3>
+<ul>
+<li>Fixed steady processor use that began once Settings had been opened and went on after the window was closed.</li>
+</ul>
+<h2>1.0.0</h2>
+<ul>
+<li>Initial release: toggle Light and Dark Mode from anywhere with one global shortcut (⌃⌥⌘D out of the box, re-recordable in Settings) or a left click on the menu bar icon.</li>
+<li>The switch is instant, animated by the system, and needs no permissions: no Input Monitoring, no Accessibility, nothing to grant.</li>
+<li>The menu bar icon shows where you are (the filled shutter leaf marks the current side, day or night) and follows along even when something else flips the appearance.</li>
+<li>English and Korean, following the macOS language.</li>
+</ul>      ]]></description>
+      <description xml:lang="ko"><![CDATA[
+<h2>1.0.2</h2>
+<h3>수정</h3>
+<ul>
+<li>설정 창을 닫으면 이전에 쓰던 앱으로 바로 돌아가, 다른 앱의 단축키가 곧바로 동작합니다.</li>
+</ul>
+<h2>1.0.1</h2>
+<h3>수정</h3>
+<ul>
+<li>설정 창을 한 번 열면 창을 닫은 뒤에도 CPU를 계속 사용하던 문제를 고쳤습니다.</li>
+</ul>
+<h2>1.0.0</h2>
+<ul>
+<li>첫 릴리스: 전역 단축키 하나로 어디서나 라이트/다크 모드를 전환합니다. 기본값은 ⌃⌥⌘D, 설정에서 원하는 조합으로 바꿀 수 있습니다. 메뉴 막대 아이콘을 클릭해도 전환됩니다.</li>
+<li>전환은 즉각적이고 시스템이 직접 애니메이션합니다. 권한은 아무것도 필요 없습니다. 입력 모니터링도, 손쉬운 사용도 없습니다.</li>
+<li>메뉴 막대 아이콘이 현재 모드를 보여주고(채워진 덧창 잎이 현재 쪽, 낮 또는 밤), 다른 곳에서 모드를 바꿔도 따라갑니다.</li>
+<li>macOS 언어를 따라 영어와 한국어를 지원합니다.</li>
+</ul>      ]]></description>
+      <sparkle:version>4</sparkle:version>
+      <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://github.com/domus-apps/shutter/releases/download/v1.0.2/Shutter.zip"
+        sparkle:edSignature="rP0m0VP/DaecdOsswX/7lcnoI/2CorXfpbkJ+4qzDTSXM/v906ne3J+kd9GUcmNR8/+/OyGxWWoKf2WOwt7ECw==" length="2913023"
+        type="application/octet-stream"/>
+    </item>
   </channel>
 </rss>
