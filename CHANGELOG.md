@@ -4,6 +4,12 @@ All notable changes to Shutter are documented here. The release workflow publish
 
 Keep each bullet on a single line: release notes render line breaks literally (both on GitHub and in the update dialog), so wrapped lines would break mid-sentence.
 
+## 1.0.2
+
+### Fixed
+
+- Closing Settings now returns you to the app you were using, so other apps' shortcuts keep working right away.
+
 ## 1.0.1
 
 ### Fixed
