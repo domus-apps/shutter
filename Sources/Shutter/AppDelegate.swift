@@ -3,6 +3,8 @@ import AppKit
 final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     private let hotKeys = HotKeyCenter()
     private let updater = UpdaterController()
+    /* Lazy: a translocated launch must not start reading the sensor. */
+    private lazy var autoAppearance = AutoAppearance()
     private var statusItem: NSStatusItem?
     private var settingsWindowController: SettingsWindowController?
 
@@ -14,6 +16,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         setUpMainMenu()
         updateStatusItemVisibility()
         registerToggleHotKey()
+        _ = autoAppearance
 
         NotificationCenter.default.addObserver(
             forName: AppPreferences.changed, object: nil, queue: .main
@@ -324,7 +327,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     private func openSettings() {
         if settingsWindowController == nil {
-            settingsWindowController = SettingsWindowController(updater: updater)
+            settingsWindowController = SettingsWindowController(
+                updater: updater, autoAppearance: autoAppearance)
             observeClose(of: settingsWindowController?.window)
         }
         /* Accessory apps don't come forward on their own — activate first or

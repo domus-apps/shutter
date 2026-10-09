@@ -4,6 +4,15 @@ All notable changes to Shutter are documented here. The release workflow publish
 
 Keep each bullet on a single line: release notes render line breaks literally (both on GitHub and in the update dialog), so wrapped lines would break mid-sentence.
 
+## 1.1.0
+
+### Added
+
+- On a MacBook, Light and Dark Mode can follow the light in the room. With Follow ambient light on in Settings, turning off the lamp switches to Dark Mode about 30 seconds later.
+- A sensitivity slider sets how dark the room has to be. Moving it toward "As soon as it dims" switches to Dark Mode under soft lighting too.
+- A mode you switch to yourself stays until the light changes again. Choosing Light Mode in a dark room keeps it until the room gets bright and then dark again.
+- A dot on the slider shows the light around you now.
+
 ## 1.0.4
 
 ### Fixed

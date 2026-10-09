@@ -36,8 +36,9 @@ enum SettingsPane: Int, CaseIterable {
 final class SettingsWindowController: NSWindowController {
     private let splitViewController: SettingsSplitViewController
 
-    init(updater: UpdaterController) {
-        splitViewController = SettingsSplitViewController(updater: updater)
+    init(updater: UpdaterController, autoAppearance: AutoAppearance) {
+        splitViewController = SettingsSplitViewController(
+            updater: updater, autoAppearance: autoAppearance)
         let window = SettingsWindow(contentViewController: splitViewController)
         window.styleMask = [.titled, .closable, .miniaturizable, .fullSizeContentView]
         /* A toolbar (even an empty one) is required for the full-height
@@ -52,7 +53,7 @@ final class SettingsWindowController: NSWindowController {
         toolbar.displayMode = .iconOnly
         window.toolbar = toolbar
         window.isReleasedWhenClosed = false
-        window.setContentSize(NSSize(width: 640, height: 400))
+        window.setContentSize(NSSize(width: 640, height: 500))
         window.center()
 
         super.init(window: window)
@@ -99,11 +100,11 @@ final class SettingsSplitViewController: NSSplitViewController {
     private let shortcutPane: NSViewController
     private var currentPane: NSViewController?
 
-    init(updater: UpdaterController) {
+    init(updater: UpdaterController, autoAppearance: AutoAppearance) {
         /* The panes are SwiftUI grouped Forms — the exact section-header +
            rounded-box arrangement Xcode's settings use — hosted inside the
            AppKit split chrome. */
-        let model = SettingsModel(updater: updater)
+        let model = SettingsModel(updater: updater, autoAppearance: autoAppearance)
         generalPane = NSHostingController(rootView: GeneralSettingsView(model: model))
         shortcutPane = NSHostingController(rootView: ShortcutSettingsView(model: model))
         super.init(nibName: nil, bundle: nil)
@@ -289,10 +290,14 @@ final class SettingsSidebarViewController: NSViewController, NSTableViewDataSour
    that aren't preferences (SMAppService, the updater). */
 final class SettingsModel: ObservableObject {
     let updater: UpdaterController
+    let autoAppearance: AutoAppearance
 
-    init(updater: UpdaterController) {
+    init(updater: UpdaterController, autoAppearance: AutoAppearance) {
         self.updater = updater
-        for name in [AppPreferences.changed, ToggleShortcutStore.changed] {
+        self.autoAppearance = autoAppearance
+        for name in [
+            AppPreferences.changed, ToggleShortcutStore.changed, AutoAppearance.readingChanged,
+        ] {
             NotificationCenter.default.addObserver(
                 forName: name, object: nil, queue: .main
             ) { [weak self] _ in
@@ -373,6 +378,8 @@ struct GeneralSettingsView: View {
                 }
             }
 
+            AmbientLightSection(model: model)
+
             Section(L("Updates")) {
                 LabeledContent(L("Version"), value: model.versionLabel)
                 Button(L("Check for Updates…")) {
@@ -382,6 +389,106 @@ struct GeneralSettingsView: View {
             }
         }
         .formStyle(.grouped)
+    }
+}
+
+/* The sensor reads over two orders of magnitude, and a step that matters
+   in a dim room (2 → 4 lux) is noise in a lit one (40 → 42): the slider
+   moves along log10(lux). */
+private struct AmbientLightSection: View {
+    @ObservedObject var model: SettingsModel
+
+    private static let range =
+        log10(AppPreferences.darkBelowLuxRange.lowerBound)...log10(
+            AppPreferences.darkBelowLuxRange.upperBound)
+
+    /* Shown off and disabled on a Mac without a readable sensor (desktops,
+       or the private API gone), rather than hidden, so the feature is
+       still discoverable. */
+    private var isOn: Bool {
+        AmbientLight.isAvailable && AppPreferences.followsAmbientLight
+    }
+
+    private var isAdjusted: Bool {
+        abs(log10(AppPreferences.darkBelowLux) - log10(AppPreferences.defaultDarkBelowLux)) > 0.005
+    }
+
+    var body: some View {
+        Section {
+            VStack(alignment: .leading, spacing: 3) {
+                Toggle(
+                    L("Follow ambient light"),
+                    isOn: model.binding({ isOn }, { AppPreferences.followsAmbientLight = $0 }))
+                .disabled(!AmbientLight.isAvailable)
+                Text(
+                    L(
+                        "Turns on Dark Mode when the room gets dark and Light Mode when it "
+                            + "gets bright again. Works while the lid is open. A mode you "
+                            + "switch to yourself stays until the light changes again.")
+                        + (AmbientLight.isAvailable
+                            ? "" : " " + L("This Mac has no light sensor Shutter can read."))
+                )
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            }
+
+            if isOn {
+                VStack(alignment: .leading, spacing: 3) {
+                    LabeledContent(L("Sensitivity")) {
+                        VStack(spacing: 2) {
+                            marker
+                            Slider(
+                                value: model.binding(
+                                    { log10(AppPreferences.darkBelowLux) },
+                                    { AppPreferences.darkBelowLux = pow(10, $0) }),
+                                in: Self.range
+                            )
+                            .labelsHidden()
+                            HStack {
+                                Text(L("Only when dark"))
+                                Spacer()
+                                Text(L("As soon as it dims"))
+                            }
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                        }
+                        .frame(maxWidth: 260)
+                    }
+                    Text(
+                        model.autoAppearance.lux == nil
+                            ? L("The lid is closed, so the light can't be read.")
+                            : L("The dot shows the light around you now. Left of the knob is dark.")
+                    )
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                }
+                if isAdjusted {
+                    Button(L("Reset to Default")) {
+                        AppPreferences.darkBelowLux = AppPreferences.defaultDarkBelowLux
+                    }
+                }
+            }
+        }
+    }
+
+    /* Where the current reading falls on the slider. Inset by the knob's
+       half-width so the dot lines up with the knob's center at both ends. */
+    private var marker: some View {
+        GeometryReader { geometry in
+            if let lux = model.autoAppearance.lux {
+                let inset: CGFloat = 10
+                let position = (log10(max(lux, 0.01)) - Self.range.lowerBound)
+                    / (Self.range.upperBound - Self.range.lowerBound)
+                let x = inset + (geometry.size.width - inset * 2) * min(max(position, 0), 1)
+                Circle()
+                    .fill(Color.accentColor)
+                    .frame(width: 6, height: 6)
+                    .position(x: x, y: geometry.size.height / 2)
+                    .animation(.easeInOut(duration: 0.4), value: x)
+            }
+        }
+        .frame(height: 6)
+        .accessibilityHidden(true)
     }
 }
 

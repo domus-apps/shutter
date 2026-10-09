@@ -23,6 +23,14 @@
 "Available in the bundled app only (Scripts/bundle.sh)." = "번들 앱에서만 사용할 수 있습니다 (Scripts/bundle.sh).";
 "Hide menu bar icon" = "메뉴 막대 아이콘 숨기기";
 "While hidden, the shortcut keeps working. Launch Shutter again to open Settings; the app appears in the Dock only while this window is open." = "숨긴 동안에도 단축키는 계속 동작합니다. Shutter를 다시 실행하면 설정이 열리고, 이 창이 열려 있는 동안에만 앱이 Dock에 나타납니다.";
+"Follow ambient light" = "주변 밝기에 따라 자동 전환";
+"Turns on Dark Mode when the room gets dark and Light Mode when it gets bright again. Works while the lid is open. A mode you switch to yourself stays until the light changes again." = "방이 어두워지면 다크 모드로, 다시 밝아지면 라이트 모드로 바꿉니다. 덮개가 열려 있을 때 동작합니다. 직접 바꾼 모드는 주변 밝기가 다시 바뀔 때까지 그대로 둡니다.";
+"This Mac has no light sensor Shutter can read." = "이 Mac에는 Shutter가 읽을 수 있는 조도 센서가 없습니다.";
+"Sensitivity" = "민감도";
+"Only when dark" = "어두울 때만";
+"As soon as it dims" = "조금만 어두워도";
+"The lid is closed, so the light can't be read." = "덮개가 닫혀 있어 주변 밝기를 읽을 수 없습니다.";
+"The dot shows the light around you now. Left of the knob is dark." = "점은 지금 주변 밝기입니다. 손잡이보다 왼쪽이면 어두운 것으로 봅니다.";
 "Updates" = "업데이트";
 "Version" = "버전";
 

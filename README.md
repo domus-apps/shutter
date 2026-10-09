@@ -13,12 +13,24 @@ one keystroke (⌃⌥⌘D out of the box, yours to change) flips the whole syste
 between Light and Dark Mode, from anywhere. A click on the menu bar icon
 does it too.
 
+On a MacBook it can also follow the light in the room: Dark Mode when the
+room gets dark, Light Mode when it gets bright again. One slider sets how
+dark is dark, and a mode you pick by hand stays until the light changes
+again.
+
 ## How it works
 
 Shutter lands on the same appearance switch System Settings uses, so the
 change is instant and animated by the system itself. The shortcut is a plain
 Carbon hotkey, no event tap, no Input Monitoring, no Accessibility. The app
 asks for no permissions at all.
+
+Following the light reads the same ambient light sensor auto-brightness
+uses, every two seconds while the setting is on. Dark means darker than the
+slider's point, light means four times brighter than that, and the light
+has to stay there for 30 seconds before anything changes, so a passing
+shadow does nothing. The sensor can't see with the lid closed, so readings
+pause until it opens. On a Mac without a built-in sensor the setting stays off.
 
 ## Development
 
