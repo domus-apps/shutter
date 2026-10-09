@@ -255,5 +255,55 @@
         sparkle:edSignature="7nA3/NlF3DN7ZMrZW/lIBLhWqHbIhPdpu0VtGwZFhhXxV+ERrAX5YexXNI0yoy3OKmCvQYTbKVeGrhvmOrOMCA==" length="2992156"
         type="application/octet-stream"/>
     </item>
+    <item>
+      <title>Shutter v1.1.1</title>
+      <link>https://github.com/domus-apps/shutter/releases/tag/v1.1.1</link>
+      <pubDate>Fri, 09 Oct 2026 06:25:26 +0000</pubDate>
+      <description xml:lang="en"><![CDATA[
+<h2>1.1.1</h2>
+<h3>Changed</h3>
+<ul>
+<li>Following the ambient light switches modes about 10 seconds after the light changes. Turning off the lamp brings Dark Mode within seconds.</li>
+</ul>
+<h2>1.1.0</h2>
+<h3>Added</h3>
+<ul>
+<li>On a MacBook, Light and Dark Mode can follow the light in the room. With Follow ambient light on in Settings, turning off the lamp switches to Dark Mode about 30 seconds later.</li>
+<li>A sensitivity slider sets how dark the room has to be. Moving it toward "As soon as it dims" switches to Dark Mode under soft lighting too.</li>
+<li>A mode you switch to yourself stays until the light changes again. Choosing Light Mode in a dark room keeps it until the room gets bright and then dark again.</li>
+<li>A dot on the slider shows the light around you now.</li>
+</ul>
+<h2>1.0.4</h2>
+<h3>Fixed</h3>
+<ul>
+<li>The Settings window could no longer be dragged after a switch in it was flipped.</li>
+</ul>      ]]></description>
+      <description xml:lang="ko"><![CDATA[
+<h2>1.1.1</h2>
+<h3>변경</h3>
+<ul>
+<li>주변 밝기에 따른 자동 전환이 밝기가 바뀌고 10초쯤 뒤에 이루어집니다. 조명을 끄면 몇 초 만에 다크 모드로 바뀝니다.</li>
+</ul>
+<h2>1.1.0</h2>
+<h3>추가</h3>
+<ul>
+<li>맥북에서 방의 밝기에 따라 라이트 모드와 다크 모드를 자동으로 바꿀 수 있습니다. 설정에서 "주변 밝기에 따라 자동 전환"을 켜 두면 조명을 끄고 30초쯤 뒤 다크 모드로 바뀝니다.</li>
+<li>민감도 슬라이더로 얼마나 어두워야 다크 모드로 바꿀지 정할 수 있습니다. "조금만 어두워도" 쪽으로 옮기면 은은한 조명 아래에서도 다크 모드로 바뀝니다.</li>
+<li>직접 바꾼 모드는 주변 밝기가 다시 바뀔 때까지 그대로 유지됩니다. 어두운 방에서 라이트 모드로 바꾸면 방이 밝아졌다가 다시 어두워질 때까지 라이트 모드로 남습니다.</li>
+<li>슬라이더 위의 점으로 지금 주변 밝기를 볼 수 있습니다.</li>
+</ul>
+<h2>1.0.4</h2>
+<h3>수정</h3>
+<ul>
+<li>설정 창의 스위치를 켜거나 끈 뒤 창을 끌어 옮길 수 없던 문제를 수정했습니다.</li>
+</ul>      ]]></description>
+      <sparkle:version>8</sparkle:version>
+      <sparkle:shortVersionString>1.1.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+      <enclosure
+        url="https://github.com/domus-apps/shutter/releases/download/v1.1.1/Shutter.zip"
+        sparkle:edSignature="LZqGbTWG5vcot7eP3P9OS1x27AYdYiLGD5L8OMMklCiWpZPctnbXi7poMUOhYHYKJ4ElUd5I5WL8Y6nVfXu0Aw==" length="2992152"
+        type="application/octet-stream"/>
+    </item>
   </channel>
 </rss>
