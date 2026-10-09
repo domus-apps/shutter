@@ -97,7 +97,7 @@ struct AmbientTracker {
     }
 
     static let ratio = 4.0
-    static let dwell: TimeInterval = 30
+    static let dwell: TimeInterval = 10
     /* Nothing to undo the first time (after launch, turning the feature
        on, or moving the slider), so a few readings are enough. */
     static let firstDwell: TimeInterval = 6

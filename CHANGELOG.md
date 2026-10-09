@@ -4,6 +4,12 @@ All notable changes to Shutter are documented here. The release workflow publish
 
 Keep each bullet on a single line: release notes render line breaks literally (both on GitHub and in the update dialog), so wrapped lines would break mid-sentence.
 
+## 1.1.1
+
+### Changed
+
+- Following the ambient light switches modes about 10 seconds after the light changes. Turning off the lamp brings Dark Mode within seconds.
+
 ## 1.1.0
 
 ### Added

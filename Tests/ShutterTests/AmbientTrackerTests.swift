@@ -36,16 +36,16 @@ private func feed(
     var tracker = AmbientTracker(darkBelow: 10)
     _ = feed(&tracker, lux: 3, from: 0, to: 10)
     let reported = feed(&tracker, lux: 200, from: 12, to: 60)
-    #expect(reported.map(\.0) == [42] && reported.map(\.1) == [.light])
+    #expect(reported.map(\.0) == [22] && reported.map(\.1) == [.light])
 }
 
 @Test func aPassingShadowChangesNothing() {
     var tracker = AmbientTracker(darkBelow: 10)
     _ = feed(&tracker, lux: 200, from: 0, to: 10)
-    // Dark for 20 seconds, then bright again: never long enough.
-    #expect(feed(&tracker, lux: 2, from: 12, to: 32).isEmpty)
-    #expect(feed(&tracker, lux: 200, from: 34, to: 40).isEmpty)
-    #expect(feed(&tracker, lux: 2, from: 42, to: 62).isEmpty)
+    // Dark for 6 seconds, then bright again: never long enough.
+    #expect(feed(&tracker, lux: 2, from: 12, to: 18).isEmpty)
+    #expect(feed(&tracker, lux: 200, from: 20, to: 26).isEmpty)
+    #expect(feed(&tracker, lux: 2, from: 28, to: 34).isEmpty)
 }
 
 @Test func dimLightKeepsWhateverWasSettled() {
@@ -65,18 +65,18 @@ private func feed(
 @Test func aGapStartsTheCountOver() {
     var tracker = AmbientTracker(darkBelow: 10)
     _ = feed(&tracker, lux: 200, from: 0, to: 10)
-    _ = feed(&tracker, lux: 2, from: 12, to: 30)
+    _ = feed(&tracker, lux: 2, from: 12, to: 18)
     // The Mac slept: the dark before the gap doesn't count toward after it.
     let reported = feed(&tracker, lux: 2, from: 100, to: 140)
-    #expect(reported.map(\.0) == [130])
+    #expect(reported.map(\.0) == [110])
 }
 
 @Test func anInterruptionStartsTheCountOverButKeepsTheZone() {
     var tracker = AmbientTracker(darkBelow: 10)
     _ = feed(&tracker, lux: 200, from: 0, to: 10)
-    _ = feed(&tracker, lux: 2, from: 12, to: 30)
+    _ = feed(&tracker, lux: 2, from: 12, to: 18)
     tracker.interrupt()
     #expect(tracker.settled == .light)
     let reported = feed(&tracker, lux: 2, from: 32, to: 80)
-    #expect(reported.map(\.0) == [62])
+    #expect(reported.map(\.0) == [42])
 }

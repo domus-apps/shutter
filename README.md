@@ -28,7 +28,7 @@ asks for no permissions at all.
 Following the light reads the same ambient light sensor auto-brightness
 uses, every two seconds while the setting is on. Dark means darker than the
 slider's point, light means four times brighter than that, and the light
-has to stay there for 30 seconds before anything changes, so a passing
+has to stay there for 10 seconds before anything changes, so a passing
 shadow does nothing. The sensor can't see with the lid closed, so readings
 pause until it opens. On a Mac without a built-in sensor the setting stays off.
 
