@@ -4,6 +4,15 @@ All notable changes to Shutter are documented here. The release workflow publish
 
 Keep each bullet on a single line: release notes render line breaks literally (both on GitHub and in the update dialog), so wrapped lines would break mid-sentence.
 
+## 1.1.3
+
+### Fixed
+
+- A shortcut recorded while a Korean input source was on showed a Korean letter instead of the key.
+- A shortcut using F1 through F20 showed a blank key.
+- Reset to Default left the shortcut button showing the previous shortcut.
+- Closing Settings or switching apps while recording the shortcut left it off until Settings was opened again.
+
 ## 1.1.2
 
 ### Changed
